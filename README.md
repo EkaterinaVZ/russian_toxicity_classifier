@@ -1,5 +1,5 @@
 # russian_toxicity_classifier
-<a href='https://huggingface.co/SkolkovoInstitute/russian_toxicity_classifier?text=дурацкий'>this page</a>
+<a href='https://huggingface.co/SkolkovoInstitute/russian_toxicity_classifier?text=дурацкий'>released at this page</a>
 
 <h2>SkolkovoInstitute/russian_toxicity_classifier</h2>
 
