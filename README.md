@@ -1,4 +1,4 @@
-# russian_toxicity_classifier
+# russian_toxicity_classifier Проект группы студентов
 <a href='https://huggingface.co/SkolkovoInstitute/russian_toxicity_classifier?text=дурацкий'>released at this page</a>
 
 <h2>SkolkovoInstitute/russian_toxicity_classifier</h2>
