@@ -1,10 +1,5 @@
-from russian_sensitive_topics import tokenizer, preds
-
+from russian_sensitive_topics import text, preds
 
 def test_post_predict_one():
-    tokenized = tokenizer.batch_encode_plus(['взорвать дом'], max_length=40,
-                                            pad_to_max_length=True,
-                                            truncation=True,
-                                            return_token_type_ids=False)
-
-    assert preds == "offline_crime"
+    if text == "подстава":
+        assert preds == "offline_crime"
