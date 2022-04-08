@@ -1,4 +1,6 @@
 # https://huggingface.co/SkolkovoInstitute/russian_toxicity_classifier?text=дурацкий
+import json
+
 import numpy as np
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification
@@ -6,13 +8,11 @@ from transformers import BertTokenizer, BertForSequenceClassification
 model_name = 'Skoltech/russian-sensitive-topics'
 tokenizer = BertTokenizer.from_pretrained(model_name)
 model = BertForSequenceClassification.from_pretrained(model_name)
-import json
 
 with open("id2topic.json") as f:
     target_vaiables_id2topic_dict = json.load(f)
 
-target_vaiables_id2topic_dict['0']
-tokenized = tokenizer.batch_encode_plus(['взорвать дом'], max_length=512,
+tokenized = tokenizer.batch_encode_plus(['взорвать дом'], max_length=40,
                                         pad_to_max_length=True,
                                         truncation=True,
                                         return_token_type_ids=False)
@@ -22,14 +22,12 @@ with torch.no_grad():
     model_output = model(tokens_ids, mask)
 
 
-def adjust_multilabel(y, is_pred=False):
-    y_adjusted = []
+def adjust_multilabel(y):
     for y_c in y:
-        y_test_curr = [0] * 19
         index = str(int(np.argmax(y_c)))
         y_c = target_vaiables_id2topic_dict[index]
-    return y_c
+        return y_c
 
 
-preds = adjust_multilabel(model_output['logits'], is_pred=True)
+preds = adjust_multilabel(model_output['logits'])
 print(preds)
